@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hillary Ojeikere - Computer Science Student & AI Enthusiast</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --pink: #FF6B9D;
+            --dark-pink: #E85A8A;
+            --light-pink: #FFB6D1;
+            --black: #1a1a1a;
+            --dark-gray: #2d2d2d;
+            --medium-gray: #666666;
+            --light-gray: #e8e8e8;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-gray);
+            background-color: var(--white);
+        }
+
+        .cursive {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+        }
+
+        /* Header/Hero Section */
+        header {
+            background: linear-gradient(135deg, var(--black) 0%, var(--dark-gray) 100%);
+            color: var(--white);
+            padding: 100px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, var(--pink) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, var(--dark-pink) 0%, transparent 50%);
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        header > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+            font-size: 3.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+
+        .name-highlight {
+            color: var(--pink);
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+        }
+
+        .tagline {
+            font-size: 1.3em;
+            margin-bottom: 20px;
+            color: var(--light-gray);
+            font-weight: 300;
+        }
+
+        .tagline .cursive {
+            color: var(--pink);
+            font-size: 1.1em;
+        }
+
+        .contact-links {
+            margin-top: 30px;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .contact-links a {
+            color: var(--white);
+            text-decoration: none;
+            padding: 12px 25px;
+            border: 2px solid var(--pink);
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .contact-links a:hover {
+            background-color: var(--pink);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 107, 157, 0.3);
+        }
+
+        /* Navigation */
+        nav {
+            background-color: var(--black);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            font-size: 0.95em;
+            letter-spacing: 0.5px;
+        }
+
+        nav a:hover {
+            color: var(--pink);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        /* Section Styling */
+        section {
+            margin-bottom: 80px;
+        }
+
+        h2 {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            color: var(--black);
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--pink) 0%, var(--light-pink) 100%);
+        }
+
+        h3 {
+            font-size: 1.5em;
+            color: var(--black);
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .about-text {
+            font-size: 1.05em;
+            line-height: 1.8;
+        }
+
+        .about-text .highlight {
+            color: var(--pink);
+            font-weight: 600;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .stat-box {
+            background: linear-gradient(135deg, var(--light-gray) 0%, var(--white) 100%);
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            border-left: 4px solid var(--pink);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .stat-number {
+            font-size: 2em;
+            font-weight: 700;
+            color: var(--pink);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .stat-label {
+            color: var(--medium-gray);
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+
+        /* Education Section */
+        .education-item {
+            background: var(--white);
+            padding: 30px;
+            margin-bottom: 25px;
+            border-radius: 10px;
+            border: 2px solid var(--light-gray);
+            transition: all 0.3s ease;
+        }
+
+        .education-item:hover {
+            border-color: var(--pink);
+            box-shadow: 0 5px 20px rgba(255, 107, 157, 0.1);
+        }
+
+        .education-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .school-name {
+            color: var(--black);
+            font-weight: 700;
+            font-size: 1.3em;
+        }
+
+        .location {
+            color: var(--medium-gray);
+            font-style: italic;
+        }
+
+        .degree {
+            color: var(--pink);
+            font-weight: 600;
+            margin: 10px 0;
+        }
+
+        .gpa {
+            background-color: var(--light-gray);
+            padding: 5px 15px;
+            border-radius: 20px;
+            color: var(--black);
+            font-weight: 600;
+            display: inline-block;
+            margin: 10px 0;
+        }
+
+        .details {
+            margin-top: 15px;
+        }
+
+        .details p {
+            margin: 8px 0;
+            color: var(--dark-gray);
+        }
+
+        .details strong {
+            color: var(--black);
+        }
+
+        /* Experience Section */
+        .experience-item {
+            margin-bottom: 40px;
+            padding: 30px;
+            background: var(--white);
+            border-left: 4px solid var(--pink);
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .experience-header {
+            margin-bottom: 15px;
+        }
+
+        .role-title {
+            color: var(--black);
+            font-weight: 700;
+            font-size: 1.2em;
+            margin-bottom: 5px;
+        }
+
+        .organization {
+            color: var(--pink);
+            font-weight: 600;
+            font-size: 1.1em;
+        }
+
+        .date {
+            color: var(--medium-gray);
+            font-style: italic;
+            font-size: 0.95em;
+        }
+
+        .experience-item ul {
+            list-style: none;
+            margin-top: 15px;
+        }
+
+        .experience-item li {
+            padding-left: 25px;
+            position: relative;
+            margin-bottom: 10px;
+            color: var(--dark-gray);
+            line-height: 1.7;
+        }
+
+        .experience-item li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--pink);
+            font-weight: bold;
+        }
+
+        /* Skills Section */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .skill-category {
+            background: linear-gradient(135deg, var(--light-gray) 0%, var(--white) 100%);
+            padding: 30px;
+            border-radius: 10px;
+            border-top: 4px solid var(--pink);
+        }
+
+        .skill-category h3 {
+            color: var(--black);
+            margin-bottom: 20px;
+            font-size: 1.3em;
+        }
+
+        .skill-tag {
+            display: inline-block;
+            background-color: var(--white);
+            color: var(--black);
+            padding: 8px 16px;
+            margin: 5px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            border: 2px solid var(--light-gray);
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            border-color: var(--pink);
+            background-color: var(--pink);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        /* Languages Section */
+        .languages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .language-card {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid var(--light-gray);
+            transition: all 0.3s ease;
+        }
+
+        .language-card:hover {
+            border-color: var(--pink);
+            box-shadow: 0 5px 15px rgba(255, 107, 157, 0.1);
+        }
+
+        .language-name {
+            font-size: 1.4em;
+            color: var(--black);
+            font-weight: 700;
+            margin-bottom: 10px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .proficiency {
+            color: var(--pink);
+            font-weight: 500;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--black) 0%, var(--dark-gray) 100%);
+            color: var(--white);
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 80px;
+        }
+
+        footer p {
+            margin-bottom: 15px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--pink);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5em;
+            }
+
+            h2 {
+                font-size: 2em;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .education-header {
+                flex-direction: column;
+            }
+
+            nav ul {
+                gap: 15px;
+                padding: 0 20px;
+            }
+
+            header {
+                padding: 60px 20px;
+            }
+        }
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Section Animation */
+        section {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <h1><span class="name-highlight">Hillary</span> Ojeikere</h1>
+        <p class="tagline">Computer Science Student · <span class="cursive">Duke University '28</span></p>
+        <div class="contact-links">
+            <a href="mailto:hillary.ojeikere@duke.edu">Email Me</a>
+            <a href="tel:+12403002817">Call</a>
+            <a href="https://www.linkedin.com/in/hillary-ojeikere-a7a748317/" target="_blank">Connect</a>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#languages">Languages</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- About Section -->
+        <section id="about">
+            <h2>About <span class="cursive">Me</span></h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Hello! I'm <span class="highlight">Hillary Ojeikere</span>, a passionate Computer Science student at Duke University. I'm driven by the intersection of <span class="highlight">technology, social impact, and innovation</span>.</p>
+                    <p>As a leader in organizations like NSBE and DukeAfrica, I work to bridge the gap between technology and underrepresented communities. Whether I'm developing smart irrigation systems using machine learning or teaching programming to young students, I'm committed to using technology as a force for positive change.</p>
+                    <p>My interests span from <span class="highlight">software engineering and AI ethics</span> to tech policy and creative writing. I'm fluent in Yoruba, proficient in French, and always eager to learn and grow.</p>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <div class="stat-number">2028</div>
+                        <div class="stat-label">Expected Graduation</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">5+</div>
+                        <div class="stat-label">Leadership Roles</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">3</div>
+                        <div class="stat-label">Languages</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education">
+            <h2>Education</h2>
+            
+            <div class="education-item">
+                <div class="education-header">
+                    <div>
+                        <div class="school-name">Duke University</div>
+                        <div class="location">Durham, NC</div>
+                    </div>
+                    <div style="text-align: right;">
+                        <div class="degree">B.S. Computer Science</div>
+                        <div class="date">Expected May 2028</div>
+                    </div>
+                </div>
+                <div class="details">
+                    <p><strong>Minor:</strong> French Studies</p>
+                    <p><strong>Relevant Coursework:</strong> Data Structures and Algorithms, Introduction to Java, Introduction to Python, Computer Architecture</p>
+                    <p><strong>Awards & Honors:</strong> Horatio Alger State Scholar</p>
+                    <p><strong>Involvements:</strong> NSBE, CS Sidekicks, The Chanticleer Yearbook, Nakisai Dance Ensemble, DukeAfrica, DTech</p>
+                </div>
+            </div>
+
+            <div class="education-item">
+                <div class="education-header">
+                    <div>
+                        <div class="school-name">Old Mill High School</div>
+                        <div class="location">Millersville, MD</div>
+                    </div>
+                    <div style="text-align: right;">
+                        <div class="degree">IB Diploma Recipient</div>
+                        <div class="date">June 2024</div>
+                    </div>
+                </div>
+                <div class="details">
+                    <p><strong>Awards & Honors:</strong> College Board National African American Recognition Award</p>
+                    <p><strong>Leadership:</strong> Editor in Chief of Yearbook, Student Council, National Honor Society</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience">
+            <h2>Leadership & <span class="cursive">Experience</span></h2>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div class="role-title">Software + Machine Learning Developer</div>
+                    <div class="organization">NSBE Modern Garden Project</div>
+                    <div class="date">March 2025 - Present</div>
+                </div>
+                <ul>
+                    <li>Collaborating with students from North Carolina Central University on an interdisciplinary team to develop a smart irrigation system that uses machine learning to optimize plant watering based on real-time soil data</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div class="role-title">Programs Co-Chair & Active Member</div>
+                    <div class="organization">Duke National Society of Black Engineers (NSBE)</div>
+                    <div class="date">September 2024 - Present</div>
+                </div>
+                <ul>
+                    <li>Designing and implementing semester-long programming calendars, including workshops, company panels, mentorship events, and networking mixers</li>
+                    <li>Contributing to outreach initiatives focused on pre-professional development, organizing workshops, and fostering professional connections for Black engineering students</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div class="role-title">External Affairs Team & Programs Chair</div>
+                    <div class="organization">DukeAfrica</div>
+                    <div class="date">March 2025 - Present</div>
+                </div>
+                <ul>
+                    <li>Supported fundraising campaigns for high-impact African NGOs, including Restore the Motherland and SOS Méditerranée, contributing to efforts that provided school supplies, life-saving equipment, and educational access in Sudan and Ethiopia</li>
+                    <li>Helped connect Duke students to meaningful volunteering opportunities with Africa-focused humanitarian organizations, fostering cross-continental engagement and global citizenship</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div class="role-title">CS Educator</div>
+                    <div class="organization">CS Sidekicks, Non-profit Organization</div>
+                    <div class="date">September 2024 - Present</div>
+                </div>
+                <ul>
+                    <li>Guided students in computer science concepts such as HTML and Python, fostering enthusiasm for technology and problem-solving</li>
+                    <li>Organized and facilitated workshops and events to teach programming languages to underrepresented communities</li>
+                    <li>Collaborated with team members to design engaging lesson plans and projects that emphasized critical thinking and innovation</li>
+                    <li>Contributed to an increase in student participation, attendance, and registration</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div class="role-title">Tour Guide</div>
+                    <div class="organization">Duke University</div>
+                    <div class="date">June 2025 - August 2025</div>
+                </div>
+                <ul>
+                    <li>Answered detailed questions about admissions, campus resources, and student experience with professionalism and enthusiasm, contributing to a welcoming and inclusive environment</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div class="role-title">Barista</div>
+                    <div class="organization">Starbucks Coffee</div>
+                    <div class="date">August 2023 - August 2024</div>
+                </div>
+                <ul>
+                    <li>Trained new employees while maintaining high throughput, processing 44 transactions in 15-minute intervals</li>
+                </ul>
+            </div>
+
+            <h3 style="margin-top: 50px; color: var(--pink);">Additional Memberships</h3>
+            
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div class="role-title">Member</div>
+                    <div class="organization">DTech</div>
+                    <div class="date">October 2025 - Present</div>
+                </div>
+                <ul>
+                    <li>Community promoting gender diversity and leadership in technology through mentorship, professional development, and internship opportunities</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div class="role-title">Member</div>
+                    <div class="organization">ColorStack</div>
+                </div>
+                <ul>
+                    <li>Participating in a national community that supports Black and Latinx computer science students through career development, networking, and technical skill-building</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills">
+            <h2>Skills & <span class="cursive">Interests</span></h2>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>Programming Languages</h3>
+                    <div>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Java</span>
+                        <span class="skill-tag">C</span>
+                        <span class="skill-tag">HTML</span>
+                        <span class="skill-tag">MIPS Assembly</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Technical Skills</h3>
+                    <div>
+                        <span class="skill-tag">Data Structures</span>
+                        <span class="skill-tag">Algorithms</span>
+                        <span class="skill-tag">Technical Writing</span>
+                        <span class="skill-tag">Academic Research</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Tools & Software</h3>
+                    <div>
+                        <span class="skill-tag">Microsoft Office</span>
+                        <span class="skill-tag">Canva</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Professional Skills</h3>
+                    <div>
+                        <span class="skill-tag">Written Communication</span>
+                        <span class="skill-tag">Verbal Communication</span>
+                        <span class="skill-tag">Leadership</span>
+                        <span class="skill-tag">Teaching</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Interests</h3>
+                    <div>
+                        <span class="skill-tag">Tech Policy</span>
+                        <span class="skill-tag">Photography</span>
+                        <span class="skill-tag">Software Engineering</span>
+                        <span class="skill-tag">AI & Ethics</span>
+                        <span class="skill-tag">Creative Writing</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Certifications</h3>
+                    <div>
+                        <span class="skill-tag">Alzheimer's & Dementia Train-the-Trainer</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Languages Section -->
+        <section id="languages">
+            <h2>Languages</h2>
+            <div class="languages-grid">
+                <div class="language-card">
+                    <div class="language-name">English</div>
+                    <div class="proficiency">Native</div>
+                </div>
+                <div class="language-card">
+                    <div class="language-name">Yoruba</div>
+                    <div class="proficiency">Native/Bilingual Proficiency</div>
+                </div>
+                <div class="language-card">
+                    <div class="language-name">French</div>
+                    <div class="proficiency">Limited Working Proficiency</div>
+                    <p style="margin-top: 10px; font-size: 0.9em; color: var(--medium-gray);">Studied abroad in Paris</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <h2>Let's <span class="cursive">Connect</span></h2>
+            <div style="text-align: center; padding: 40px 0;">
+                <p style="font-size: 1.2em; margin-bottom: 30px; color: var(--dark-gray);">
+                    I'm always excited to connect with fellow tech enthusiasts, potential collaborators, or anyone interested in AI, social impact, and innovation.
+                </p>
+                <div class="contact-links">
+                    <a href="mailto:hillary.ojeikere@duke.edu">hillary.ojeikere@duke.edu</a>
+                    <a href="tel:+12403002817">(240) 300-2817</a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p class="cursive" style="font-size: 1.2em; color: var(--pink);">Hillary Ojeikere</p>
+        <p>Computer Science Student | AI Enthusiast | Change Maker</p>
+        <div class="footer-links">
+            <a href="mailto:hillary.ojeikere@duke.edu">Email</a>
+            <a href="#about">About</a>
+            <a href="#experience">Experience</a>
+            <a href="#skills">Skills</a>
+        </div>
+        <p style="margin-top: 30px; font-size: 0.9em; color: var(--medium-gray);">
+            © 2025 Hillary Ojeikere. All rights reserved.
+        </p>
+    </footer>
+</body>
+</html>
